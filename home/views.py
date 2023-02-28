@@ -2,7 +2,6 @@ from django.shortcuts import render
 import requests
 from bs4 import BeautifulSoup
 import pymysql
-import numpy as np
 import pandas as pd
 import time
 import random
