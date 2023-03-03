@@ -2,13 +2,14 @@ from django.shortcuts import render
 import requests
 from bs4 import BeautifulSoup
 import pymysql
+import numpy as np
 import pandas as pd
 import time
 import random
 
 # 資料庫設定
 db_settings = {
-    "host": "0.0.0.0",
+    "host": "127.0.0.1",
     "port": 3306,
     "user": "root",
     "password": "12345678",
@@ -46,10 +47,11 @@ for i in range(2):#爬取兩頁
 #取出全部資料
 cursor.execute("SELECT * FROM data_ptt")
 data_ptt = cursor.fetchall()    
+data_str = '\n'.join(str(v) for v in data_ptt)   
 
 def Ptt(request):
     return render(request, 'crypto.html',{
-                'data_ptt' : pd.DataFrame(data_ptt)
+                'data_ptt' : data_str
     })
 
 
