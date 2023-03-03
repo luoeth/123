@@ -47,7 +47,7 @@ for i in range(2):#爬取兩頁
 #取出全部資料
 cursor.execute("SELECT * FROM data_ptt")
 data_ptt = cursor.fetchall()    
-data_str = '\n'.join(str(v) for v in data_ptt)#轉Str.
+data_str = '\n'.join(str(v) for v in data_ptt)#轉Str
 
 def Ptt(request):
     return render(request, 'crypto.html',{
