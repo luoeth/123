@@ -18,8 +18,12 @@ db_settings = {
 }
 
 
-# 建立Connection物件
-conn = pymysql.connect(**db_settings)
+try:
+    # 建立Connection物件
+    conn = pymysql.connect(**db_settings)
+except Exception as ex:
+    print(ex)
+
 # 建立Cursor物件
 cursor = conn.cursor()
 #如果已經存在的話就刪除
