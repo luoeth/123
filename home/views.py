@@ -9,9 +9,9 @@ import random
 
 # 資料庫設定.
 db_settings = {
-    "host": "localhost",
+    # "host": "localhost",
     "port": 3306,
-    "user": "root",
+    "user": "test",
     "password": "12345678",
     "db": "crypto",
     "charset": "utf8"
