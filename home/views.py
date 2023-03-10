@@ -15,7 +15,7 @@ db_settings = {
     "password": "12345678",
     "db": "crypto",
     "charset": "utf8",
-    "connect_timeout" : 1000
+    "connect_timeout" : 100
 }
 
 
