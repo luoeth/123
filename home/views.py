@@ -151,7 +151,7 @@ for j in json:
 
 #取出資料
 try:
-    cursor.execute("SELECT logo FROM data_defi WHERE tvl>10000000 and change_1h>0.05 and change_1d>0.1 and change_7d>0.2")
+    cursor.execute("SELECT logo FROM data_defi WHERE tvl>20000000 and change_1h>0.05 and change_1d>0.1 and change_7d>0.3")
     data_logo = cursor.fetchall()
     data_logo_0 = ''.join(data_logo[0])#轉str
     data_logo_1 = ''.join(data_logo[1])
@@ -159,7 +159,7 @@ try:
     data_logo_3 = ''.join(data_logo[3])
     data_logo_4 = ''.join(data_logo[4])
 
-    cursor.execute("SELECT name FROM data_defi WHERE tvl>10000000 and change_1h>0.05 and change_1d>0.1 and change_7d>0.2")
+    cursor.execute("SELECT name FROM data_defi WHERE tvl>20000000 and change_1h>0.05 and change_1d>0.1 and change_7d>0.3")
     data_name = cursor.fetchall() 
     data_name_0 = ''.join(data_name[0])
     data_name_1 = ''.join(data_name[1])
@@ -167,7 +167,7 @@ try:
     data_name_3 = ''.join(data_name[3])
     data_name_4 = ''.join(data_name[4])
 
-    cursor.execute("SELECT url FROM data_defi WHERE tvl>10000000 and change_1h>0.05 and change_1d>0.1 and change_7d>0.2")
+    cursor.execute("SELECT url FROM data_defi WHERE tvl>20000000 and change_1h>0.05 and change_1d>0.1 and change_7d>0.3")
     data_url = cursor.fetchall() 
     data_url_0 = ''.join(data_url[0])
     data_url_1 = ''.join(data_url[1])
