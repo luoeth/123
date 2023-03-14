@@ -1,1 +1,1 @@
-web: gunicorn first.wsgi:application
+web: gunicorn --worker-class=gevent --worker-connections=1000 --workers=3 --timeout 1000 first.wsgi:application
