@@ -35,7 +35,7 @@ conn.commit()
 #PTT DigiCurrency
 url = "https://www.ptt.cc/bbs/DigiCurrency/index.html"
 for i in range(2):#爬取兩頁
-    g = requests.get(url)
+    g = requests.get(url,timeout=None)
     soup = BeautifulSoup(g.text,"html.parser")#將網頁資料以html.parser
     title = soup.select("div.title a") #標題
     u = soup.select("div.btn-group.btn-group-paging a") #a標籤
@@ -70,7 +70,7 @@ conn.commit()
 url = "https://www.blocktempo.com/2023/"
 for i in range(2,4):#爬取2、3頁
     i = str(i)#轉成字串
-    g = requests.get(url) #將網頁資料GET下來
+    g = requests.get(url,timeout=None) #將網頁資料GET下來
     soup = BeautifulSoup(g.text,"html.parser") #將網頁資料以html.parser
     sel = soup.select("h3.jeg_post_title a") #取HTML標中的 <div class="title"></div> 中的<a>標籤存入sel
     url = "https://www.blocktempo.com/2023/page/" + i
@@ -101,7 +101,7 @@ conn.commit()
 url = "https://abmedia.io/blog"
 for i in range(2,4):#爬取2、3頁
     i = str(i)#轉成字串
-    g = requests.get(url) #將網頁資料GET下來
+    g = requests.get(url,timeout=None) #將網頁資料GET下來
     soup = BeautifulSoup(g.text,"html.parser") #將網頁資料以html.parser
     sel = soup.select("h3.title a") #取HTML標中的class="title"中的<a>標籤存入sel
     url = "https://abmedia.io/blog/page/" + i
@@ -138,7 +138,7 @@ sql = '''CREATE TABLE data_defi(
 cursor.execute(sql)
 conn.commit()
 
-r = requests.get('https://api.llama.fi/protocols')
+r = requests.get('https://api.llama.fi/protocols',timeout=None)
 time.sleep(random.randint(1,3))#休息1~3秒之間
 json = r.json()
 
@@ -204,7 +204,7 @@ headers = {
     "Authorization": "9e1066ba-9854-4153-af9e-0959a5d7f6df"
 }
 
-response = requests.get(url, headers=headers)
+response = requests.get(url, headers=headers,timeout=None)
 response_dict = response.json()#轉為字典dict
 response_content = response_dict['contracts']#取出contracts裡的list
 dict = {}#將list轉dict
