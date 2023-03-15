@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-6ts=2##_g=6&8ol2&2_&yn*=r%ys+3plu5ctkk8srmg(5ow21x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['web-production-fd074.up.railway.app']
+ALLOWED_HOSTS = ['web-production-fd074.up.railway.app','127.0.0.1','https://crypto-crawler-1.onrender.com']
 
 
 # Application definition
