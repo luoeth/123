@@ -49,6 +49,8 @@ for i in range(2):#爬取兩頁
 cursor.execute("SELECT * FROM data_ptt")
 data_ptt = cursor.fetchall()    
 data_str = '\n'.join(str(v) for v in data_ptt)#轉Str
+cursor.close()
+conn.close()
 
 def Ptt(request):
     return render(request, 'crypto.html',{
@@ -56,7 +58,9 @@ def Ptt(request):
     })
 
 
-
+conn = pymysql.connect(**db_settings)
+# 建立Cursor物件
+cursor = conn.cursor()
 #如果已經存在的話就刪除
 cursor.execute('DROP TABLE IF EXISTS data_block')
 #建立table
@@ -81,6 +85,8 @@ for i in range(2,4):#爬取2、3頁
 #取出全部資料
 cursor.execute("SELECT * FROM data_block")
 data_block = cursor.fetchall() 
+cursor.close()
+conn.close()
 
 def Blocktempo(request):
     return render(request, 'blocktempo.html',{
@@ -88,6 +94,9 @@ def Blocktempo(request):
     })
 
 
+conn = pymysql.connect(**db_settings)
+# 建立Cursor物件
+cursor = conn.cursor()
 #如果已經存在的話就刪除
 cursor.execute('DROP TABLE IF EXISTS data_abmedia')
 #建立table
@@ -112,6 +121,8 @@ for i in range(2,4):#爬取2、3頁
 #取出全部資料
 cursor.execute("SELECT * FROM data_abmedia")
 data_abmedia = cursor.fetchall() 
+cursor.close()
+conn.close()
 
 def Abmedia(request):
     return render(request, 'abmedia.html',{
@@ -122,7 +133,9 @@ def Abmedia(request):
 pd.set_option('max_colwidth', 800)
 
 
-
+conn = pymysql.connect(**db_settings)
+# 建立Cursor物件
+cursor = conn.cursor()
 # DefiLlama 
  #如果crypto已經存在的話就刪除
 cursor.execute('DROP TABLE IF EXISTS data_defi')
@@ -176,7 +189,8 @@ try:
     data_url_4 = ''.join(data_url[4])
 except Exception as ex:#例外錯誤處理 
                 print(ex)
-
+cursor.close()
+conn.close()
 def Defi(request):
     return render(request, 'defi.html',{
         'data_logo_0' : data_logo_0,
@@ -197,6 +211,9 @@ def Defi(request):
     })
 
 
+conn = pymysql.connect(**db_settings)
+# 建立Cursor物件
+cursor = conn.cursor()
 #Opensea
 url = "https://api.nftport.xyz/v0/contracts/top?page_size=10&page_number=1&period=24h&order_by=volume&chain=ethereum&chain=polygon"
 headers = {
