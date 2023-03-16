@@ -152,7 +152,7 @@ cursor.execute(sql)
 conn.commit()
 
 r = requests.get('https://api.llama.fi/protocols',timeout=None)
-time.sleep(random.randint(1,3))#休息1~3秒之間
+# time.sleep(random.randint(1,3))#休息1~3秒之間
 json = r.json()
 
 for j in json:
