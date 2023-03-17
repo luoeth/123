@@ -11,7 +11,7 @@ import random
 db_settings = {
     "host": "192.168.0.173",
     "port": 3306,
-    "user": "test",
+    "user": "root",
     "password": "12345678",
     "db": "crypto",
     "charset": "utf8",
