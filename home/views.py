@@ -9,7 +9,7 @@ import random
 
 # 資料庫設定.
 db_settings = {
-    "host": "192.168.0.173",
+    "host": "127.0.0.1",
     "port": 3306,
     "user": "root",
     "password": "12345678",
