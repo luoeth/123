@@ -9,13 +9,13 @@ import random
 
 # 資料庫設定.
 db_settings = {
-    "host": "127.0.0.1",
+    "host": "192.168.0.173",
     "port": 3306,
     "user": "test",
     "password": "12345678",
     "db": "crypto",
     "charset": "utf8",
-    "connect_timeout" : 1000
+    "connect_timeout" : 28800
 }
 
 
