@@ -9,10 +9,10 @@ import random
 
 # 資料庫設定
 db_settings = {
-    "host": "192.168.0.173",
-    "port": 3306,
+    "host": "containers-us-west-149.railway.app",
+    "port": 7759,
     "user": "root",
-    "password": "12345678",
+    "password": "7xY83x3KZ3z09SksfURP",
     "db": "crypto",
     "charset": "utf8",
     "connect_timeout" : 28800
