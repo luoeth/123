@@ -7,7 +7,7 @@ import pandas as pd
 import time
 import random
 
-# 資料庫設定
+# 資料庫設定.
 db_settings = {
     "host": "192.168.0.173",
     "port": 3306,
