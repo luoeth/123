@@ -4,6 +4,8 @@ from bs4 import BeautifulSoup
 import pymysql
 import pandas as pd
 
+#增加欄寬，讓資料完整顯示
+pd.set_option('max_colwidth', 800)
 
 # 資料庫設定
 db_settings = {
@@ -52,8 +54,6 @@ try:
 except Exception as ex:#例外錯誤處理
     conn.rollback()
     print(ex)
-# finally:
-#     conn.close()
 
 def Ptt(request):
     return render(request, 'crypto.html',{
@@ -61,9 +61,6 @@ def Ptt(request):
     })
 
 
-# conn = pymysql.connect(**db_settings)
-# 建立Cursor物件
-# cursor = conn.cursor()
 #如果已經存在的話就刪除
 cursor.execute('DROP TABLE IF EXISTS data_block')
 try:
@@ -94,8 +91,6 @@ try:
 except Exception as ex:#例外錯誤處理
     conn.rollback()
     print(ex)
-# finally:
-#     conn.close()    
     
 def Blocktempo(request):
     return render(request, 'blocktempo.html',{
@@ -103,9 +98,6 @@ def Blocktempo(request):
     })
 
 
-# conn = pymysql.connect(**db_settings)
-# 建立Cursor物件
-# cursor = conn.cursor()
 #如果已經存在的話就刪除
 cursor.execute('DROP TABLE IF EXISTS data_abmedia')
 try:
@@ -136,22 +128,13 @@ try:
 except Exception as ex:#例外錯誤處理
     conn.rollback()
     print(ex)
-# finally:
-#     conn.close()       
-    
+  
 def Abmedia(request):
     return render(request, 'abmedia.html',{
         'data_abmedia' : data_abmedia_str
     })
 
-#增加欄寬，讓資料完整顯示
-pd.set_option('max_colwidth', 800)
 
-
-# conn = pymysql.connect(**db_settings)
-# 建立Cursor物件
-# cursor = conn.cursor()
-# DefiLlama 
  #如果crypto已經存在的話就刪除
 cursor.execute('DROP TABLE IF EXISTS data_defi')
 try:
@@ -168,9 +151,9 @@ try:
     cursor.execute(sql)
     conn.commit()
 
+    # DefiLlama 
     r = requests.get('https://api.llama.fi/protocols',timeout=None)
     json = r.json()
-
     for j in json:
             try:
                     cursor.execute("INSERT INTO data_defi(name, logo, tvl, change_1h, change_1d, change_7d, url) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s');" %(j["name"], j["logo"], j["tvl"], j["change_1h"], j["change_1d"], j["change_7d"], j["url"]))
@@ -204,12 +187,10 @@ try:
         data_url_3 = ''.join(data_url[3])
         data_url_4 = ''.join(data_url[4])
     except Exception as ex:#例外錯誤處理 
-                    print(ex)
+            print(ex)
 except Exception as ex:#例外錯誤處理
     conn.rollback()
-    print(ex)
-# finally:
-#     conn.close()       
+    print(ex)     
     
 def Defi(request):
     return render(request, 'defi.html',{
@@ -231,10 +212,7 @@ def Defi(request):
     })
 
 
-# conn = pymysql.connect(**db_settings)
-# 建立Cursor物件
-# cursor = conn.cursor()
-#Opensea
+#NFTPort Opensea
 url = "https://api.nftport.xyz/v0/contracts/top?page_size=10&page_number=1&period=24h&order_by=volume&chain=ethereum&chain=polygon"
 headers = {
     "accept": "application/json",
@@ -266,6 +244,5 @@ def Nft(request):
         'logo_4' : dict[4]['metadata']['thumbnail_url'],
         'description_4' : dict[4]['metadata']['description'],
     })
-
 cursor.close()
 conn.close()
