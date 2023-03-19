@@ -2,10 +2,8 @@ from django.shortcuts import render
 import requests
 from bs4 import BeautifulSoup
 import pymysql
-import numpy as np
 import pandas as pd
-import time
-import random
+
 
 # 資料庫設定
 db_settings = {
@@ -54,8 +52,8 @@ try:
 except Exception as ex:#例外錯誤處理
     conn.rollback()
     print(ex)
-finally:
-    conn.close()
+# finally:
+#     conn.close()
 
 def Ptt(request):
     return render(request, 'crypto.html',{
@@ -63,9 +61,9 @@ def Ptt(request):
     })
 
 
-conn = pymysql.connect(**db_settings)
+# conn = pymysql.connect(**db_settings)
 # 建立Cursor物件
-cursor = conn.cursor()
+# cursor = conn.cursor()
 #如果已經存在的話就刪除
 cursor.execute('DROP TABLE IF EXISTS data_block')
 try:
@@ -96,8 +94,8 @@ try:
 except Exception as ex:#例外錯誤處理
     conn.rollback()
     print(ex)
-finally:
-    conn.close()    
+# finally:
+#     conn.close()    
     
 def Blocktempo(request):
     return render(request, 'blocktempo.html',{
@@ -105,9 +103,9 @@ def Blocktempo(request):
     })
 
 
-conn = pymysql.connect(**db_settings)
+# conn = pymysql.connect(**db_settings)
 # 建立Cursor物件
-cursor = conn.cursor()
+# cursor = conn.cursor()
 #如果已經存在的話就刪除
 cursor.execute('DROP TABLE IF EXISTS data_abmedia')
 try:
@@ -138,8 +136,8 @@ try:
 except Exception as ex:#例外錯誤處理
     conn.rollback()
     print(ex)
-finally:
-    conn.close()       
+# finally:
+#     conn.close()       
     
 def Abmedia(request):
     return render(request, 'abmedia.html',{
@@ -150,9 +148,9 @@ def Abmedia(request):
 pd.set_option('max_colwidth', 800)
 
 
-conn = pymysql.connect(**db_settings)
+# conn = pymysql.connect(**db_settings)
 # 建立Cursor物件
-cursor = conn.cursor()
+# cursor = conn.cursor()
 # DefiLlama 
  #如果crypto已經存在的話就刪除
 cursor.execute('DROP TABLE IF EXISTS data_defi')
@@ -210,8 +208,8 @@ try:
 except Exception as ex:#例外錯誤處理
     conn.rollback()
     print(ex)
-finally:
-    conn.close()       
+# finally:
+#     conn.close()       
     
 def Defi(request):
     return render(request, 'defi.html',{
@@ -233,9 +231,9 @@ def Defi(request):
     })
 
 
-conn = pymysql.connect(**db_settings)
+# conn = pymysql.connect(**db_settings)
 # 建立Cursor物件
-cursor = conn.cursor()
+# cursor = conn.cursor()
 #Opensea
 url = "https://api.nftport.xyz/v0/contracts/top?page_size=10&page_number=1&period=24h&order_by=volume&chain=ethereum&chain=polygon"
 headers = {
