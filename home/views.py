@@ -50,7 +50,7 @@ try:
     #取出全部資料
     cursor.execute("SELECT * FROM data_ptt")
     data_ptt = cursor.fetchall()    
-    data_str = '\n'.join(str(v) for v in data_ptt)#轉Str
+    data_ptt_str = '\n'.join(str(v) for v in data_ptt)#轉Str
 except Exception as ex:#例外錯誤處理
     conn.rollback()
     print(ex)
@@ -59,7 +59,7 @@ finally:
 
 def Ptt(request):
     return render(request, 'crypto.html',{
-                'data_ptt' : data_str
+                'data_ptt' : data_ptt_str
     })
 
 
@@ -92,6 +92,7 @@ try:
     #取出全部資料
     cursor.execute("SELECT * FROM data_block")
     data_block = cursor.fetchall() 
+    data_block_str = '\n'.join(str(v) for v in data_block)#轉Str
 except Exception as ex:#例外錯誤處理
     conn.rollback()
     print(ex)
@@ -100,7 +101,7 @@ finally:
     
 def Blocktempo(request):
     return render(request, 'blocktempo.html',{
-        'data_block' : pd.DataFrame(data_block)
+        'data_block' : data_block_str
     })
 
 
@@ -133,6 +134,7 @@ try:
     #取出全部資料
     cursor.execute("SELECT * FROM data_abmedia")
     data_abmedia = cursor.fetchall() 
+    data_abmedia_str = '\n'.join(str(v) for v in data_abmedia)#轉Str
 except Exception as ex:#例外錯誤處理
     conn.rollback()
     print(ex)
@@ -141,7 +143,7 @@ finally:
     
 def Abmedia(request):
     return render(request, 'abmedia.html',{
-        'data_abmedia' : pd.DataFrame(data_abmedia)
+        'data_abmedia' : data_abmedia_str
     })
 
 #增加欄寬，讓資料完整顯示
