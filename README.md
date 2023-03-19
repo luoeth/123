@@ -1,4 +1,8 @@
 # Crypto-crawler
+# 部署於Railway
+* https://web-production-fd074.up.railway.app/
+<img src=https://railway.app/brand/logotype-light.png>
+
 # 使用`BeautifulSoup`爬取
 * [Ptt DigiCurrency](https://www.ptt.cc/bbs/DigiCurrency/index.html)、[Blocktempo 動區動趨](https://www.blocktempo.com/2023/)與[Abmedia 鏈新聞](https://abmedia.io/blog)最新的資訊
 
