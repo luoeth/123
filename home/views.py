@@ -9,11 +9,16 @@ pd.set_option('max_colwidth', 800)
 
 # 資料庫設定
 db_settings = {
-    "host": "containers-us-west-149.railway.app",
-    "port": 7759,
-    "user": "root",
-    "password": "7xY83x3KZ3z09SksfURP",
-    "db": "crypto",
+    # "host": "containers-us-west-149.railway.app",
+    "host": "dpg-ch190pbh4hstbhiqfn1g-a",
+    # "port": 7759,
+    "port": 5432,
+    # "user": "root",
+    "user": "cp_user",
+    # "password": "7xY83x3KZ3z09SksfURP",
+    "password": "AzgqlAnWU6Xm27MNM31HbPqtRZaIEAva",
+    # "db": "crypto",
+    "db": "cp",
     "charset": "utf8",
     "connect_timeout" : 28800
 }
