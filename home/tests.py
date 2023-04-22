@@ -12,8 +12,8 @@
 # y = round(int(x) * 1.14, 2)
 # print("港幣:", y)
 
-# for i in range(6,0,-1):
-#     print("*"*i)
+# for i in range(1,6,1):
+#      print("*"*i)
 
 
 for i in range(5,0,-1):
