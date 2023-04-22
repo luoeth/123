@@ -3,29 +3,26 @@ import requests
 from bs4 import BeautifulSoup
 import pymysql
 import pandas as pd
+import psycopg2
 
 #增加欄寬，讓資料完整顯示
 pd.set_option('max_colwidth', 800)
 
 # 資料庫設定
-db_settings = {
-    # "host": "containers-us-west-149.railway.app",
-    "host": "dpg-ch190pbh4hstbhiqfn1g-a",
-    # "port": 7759,
-    "port": 5432,
-    # "user": "root",
-    "user": "cp_user",
-    # "password": "7xY83x3KZ3z09SksfURP",
-    "password": "AzgqlAnWU6Xm27MNM31HbPqtRZaIEAva",
-    # "db": "crypto",
-    "db": "cp",
-    "charset": "utf8",
-    "connect_timeout" : 28800
-}
+# db_settings = {
+#     # "host": "containers-us-west-149.railway.app",
+#     # "port": 7759,
+#     # "user": "root",
+#     # "password": "7xY83x3KZ3z09SksfURP",
+#     # "db": "crypto",
+#     "charset": "utf8",
+#     "connect_timeout" : 28800
+# }
 
 
 
-conn = pymysql.connect(**db_settings)
+# conn = pymysql.connect(**db_settings)
+conn = psycopg2.connect(database="cp", user="cp_user", password="AzgqlAnWU6Xm27MNM31HbPqtRZaIEAva", host="dpg-ch190pbh4hstbhiqfn1g-a", port="5432")
 # 建立Cursor物件
 cursor = conn.cursor()
 #如果已經存在的話就刪除
