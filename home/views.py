@@ -5,7 +5,7 @@ import pymysql
 import pandas as pd
 
 
-#增加欄寬，讓資料完整顯示
+#增加欄寬，讓資料完整顯示.
 pd.set_option('max_colwidth', 800)
 
 # 資料庫設定
