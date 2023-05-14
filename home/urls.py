@@ -10,4 +10,5 @@ urlpatterns = [
     path('abmedia', views.Abmedia, name='Abmedia'),
     path('defi', views.Defi, name='Defi'),
     path('nft', views.Nft, name='Nft'),
+    path('chainstvl', views.Chainstvl, name='Chainstvl'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

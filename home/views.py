@@ -3,6 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 import pymysql
 import pandas as pd
+import plotly.express as px
 
 
 #增加欄寬，讓資料完整顯示.
@@ -20,11 +21,10 @@ db_settings = {
 }
 
 
-
-conn = pymysql.connect(**db_settings)
-
 # 建立Cursor物件
+conn = pymysql.connect(**db_settings)
 cursor = conn.cursor()
+
 #如果已經存在的話就刪除
 cursor.execute('DROP TABLE IF EXISTS data_ptt')
 try:
@@ -247,5 +247,49 @@ def Nft(request):
         'logo_4' : dict[4]['metadata']['thumbnail_url'],
         'description_4' : dict[4]['metadata']['description'],
     })
+
+
+#如果crypto已經存在的話就刪除
+cursor.execute('DROP TABLE IF EXISTS data_defi_chainsTVL')
+# try:
+conn.ping(reconnect=True)#檢查連結是否斷開，如是重連
+    #建立table
+sql = '''CREATE TABLE data_defi_chainsTVL(
+                name text,
+                tvl text);'''
+cursor.execute(sql)
+conn.commit()
+
+# DefiLlama / chains
+r = requests.get('https://api.llama.fi/v2/chains',timeout=None)
+json = r.json()
+for j in json:
+        try:
+                cursor.execute("INSERT INTO data_defi_chainsTVL(name, tvl) VALUES ('%s', '%s');" %(j["name"], j["tvl"]))
+                conn.commit()
+        except Exception as ex:#例外錯誤處理 
+                print(ex)
+
+try:
+    cursor.execute("SELECT * FROM data_defi_chainsTVL")
+    data_tvl = cursor.fetchall()
+    tvl = list(data_tvl)#轉list
+except Exception as ex:#例外錯誤處理 
+    print(ex)
+
+df = pd.DataFrame(tvl,
+    columns=['chains', 'tvl'])
+
+fig = px.pie(df, values='tvl', names='chains', title='TVL of all Chains')
+fig.update_traces(textposition='inside', textinfo='percent+label')
+
+
+def Chainstvl(request):
+    return render(request, 'chainstvl.html',{
+        'chainstvl' : fig.show()
+    })
+
+
+
 cursor.close()
 conn.close()
