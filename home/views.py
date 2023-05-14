@@ -283,11 +283,11 @@ df = pd.DataFrame(tvl,
 
 fig = px.pie(df, values='tvl', names='chains', title='TVL of all Chains')
 fig.update_traces(textposition='inside', textinfo='percent+label')
-
+show = fig.show()
 
 def Chainstvl(request):
     return render(request, 'chainstvl.html',{
-        'chainstvl' : fig.show()
+        'chainstvl' : show
     })
 
 
