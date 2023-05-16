@@ -26,6 +26,7 @@ from bs4 import BeautifulSoup
 import pymysql
 import pandas as pd
 import plotly.express as px
+from IPython.display import HTML
 
 # 資料庫設定
 db_settings = {
@@ -74,4 +75,4 @@ df = pd.DataFrame(tvl,
 
 fig = px.pie(df, values='tvl', names='chains', title='TVL of all Chains')
 fig.update_traces(textposition='inside', textinfo='percent+label')
-fig.show()
+

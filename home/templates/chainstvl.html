@@ -1,5 +1,11 @@
 {% extends 'crypto.html' %}
 
 {% block body %}
-    <p>{{ chainstvl }}</p>
+    <div id="chart-container"></div>
+    <script>
+        var chartData = JSON.parse('{{ chart_json|safe }}'); // 使用模板引擎將圖表數據傳遞给JavaScript
+      
+        // 在容器元素中繪製圖表
+        Plotly.newPlot('chart-container', chartData.data, chartData.layout);
+    </script>
 {% endblock %}

@@ -5,7 +5,8 @@ import pymysql
 import pandas as pd
 import matplotlib.pyplot as plt
 import plotly.express as px
-
+import plotly.io as pio
+import json
 
 #增加欄寬，讓資料完整顯示.
 pd.set_option('max_colwidth', 800)
@@ -20,7 +21,6 @@ db_settings = {
     "charset": "utf8",
     "connect_timeout" : 28800
 }
-
 
 # 建立Cursor物件
 conn = pymysql.connect(**db_settings)
@@ -283,14 +283,14 @@ df = pd.DataFrame(tvl,
 
 fig = px.pie(df, values='tvl', names='chains', title='TVL of all Chains')
 fig.update_traces(textposition='inside', textinfo='percent+label')
-show = fig.show()
+#將圖表導出為JSON數據
+chart_json = pio.to_json(fig)
 
 def Chainstvl(request):
-    return render(request, 'chainstvl.html',{
-        'chainstvl' : show
-    })
-
-
+    context = {
+        'chart_json': chart_json
+    }
+    return render(request, 'chainstvl.html', context)
 
 cursor.close()
 conn.close()
