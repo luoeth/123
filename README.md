@@ -20,6 +20,6 @@
 
 # requests 發送接收 [DefiLlama API](https://defillama.com/docs/api)
 * Get current TVL of all chains 
-* 使用Plotly繪製圖表，分析目前各鏈的占比
+* 使用[Plotly](https://plotly.com/python/)繪製圖表，分析目前各鏈的占比
 
 ![](chainstvl.png)
