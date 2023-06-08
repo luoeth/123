@@ -32,7 +32,7 @@ try:
     conn.ping(reconnect=True)#檢查連結是否斷開，如是重連
     #建立table
     sql = '''CREATE TABLE data_ptt(
-                title VARCHAR(255),
+                title text,
                 url VARCHAR(255));'''
     cursor.execute(sql)
     conn.commit()
@@ -46,14 +46,16 @@ try:
         u = soup.select("div.btn-group.btn-group-paging a") #a標籤
         url = "https://www.ptt.cc"+ u[1]["href"] #上一頁的網址
         
+        
         for titles in title: #印出網址跟標題
-            cursor.execute("INSERT INTO data_ptt(title, url) VALUES ('%s', '%s');" %(titles.text, titles["href"]) )
-            conn.commit()
-
+            try:
+                cursor.execute("INSERT INTO data_ptt(title, url) VALUES ('%s', '%s');" %(titles.text, titles["href"]) )
+                conn.commit()
+            except Exception as ex:#例外錯誤處理
+                pass
     #取出全部資料
     cursor.execute("SELECT * FROM data_ptt")
-    data_ptt = cursor.fetchall()
-    print(type(data_ptt))    
+    data_ptt = cursor.fetchall()    
     data_ptt_str = '\n'.join(str(v) for v in data_ptt)#元組tuple轉字串Str
 except Exception as ex:#例外錯誤處理
     conn.rollback()
