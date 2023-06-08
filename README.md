@@ -17,3 +17,9 @@
 * Returns a list of top-selling contracts, like in [OpenSea](https://opensea.io/rankings).
 
 ![](nft.png)
+
+# requests 發送接收 [DefiLlama API](https://defillama.com/docs/api)
+* Get current TVL of all chains 
+* 使用[Plotly](https://plotly.com/python/)繪製圖表，分析目前各鏈的占比
+
+![](chainstvl.png)
